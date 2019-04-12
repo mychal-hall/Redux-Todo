@@ -1,5 +1,7 @@
+// Importing from action.js
 import { COMPLETED, ADD_NEW } from "../actions/action";
 
+// Setting the initial state, which is in the store for me to access through todolist.
 const initialState = {
   todos: [
     {
@@ -9,6 +11,8 @@ const initialState = {
   ]
 };
 
+// building the reducer. which will handle most of the work throughout the app. could also build
+// a reducer combiner to handle this if they get unwieldy
 function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_NEW:

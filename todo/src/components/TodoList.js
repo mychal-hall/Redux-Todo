@@ -1,22 +1,27 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { completed, addNew } from "../actions/action";
+import { connect } from "react-redux"; // Importing the connect, which is at the end of my code
+import { completed, addNew } from "../actions/action"; // importing function from actions.js to use
 
 class TodoList extends Component {
+  // building the todolist component
   state = {
-    newTodo: ""
+    // setting the state for my new todo to an empty string so i can manipulate
+    newTodo: "" // through the form before adding it to the state
   };
   handleChanges = e => {
+    // Updates the state with the text input on the form
     this.setState({ newTodo: e.target.value });
   };
 
   handleClick = e => {
-    e.preventDefault();
+    // this will use the imported addNew method to take the newTodo on state
+    e.preventDefault(); // and push in into the props.todos which then become the state
     this.props.addNew(this.state.newTodo);
   };
 
   toggleComplete = (e, index) => {
-    e.preventDefault();
+    // this will allow the user to toggle a check beside completed
+    e.preventDefault(); // todos by setting the completed boolean to either true or false
     this.props.completed(index);
   };
 
@@ -46,6 +51,7 @@ class TodoList extends Component {
 }
 
 const mapStateToProps = state => {
+  // This wil take the state todos and move them to the props
   return {
     todos: state.todos
   };
