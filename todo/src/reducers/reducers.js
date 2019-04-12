@@ -3,12 +3,8 @@ import { COMPLETED, ADD_NEW } from "../actions/action";
 const initialState = {
   todos: [
     {
-      value: "word",
+      value: "Example task - Click to complete",
       completed: false
-    },
-    {
-      value: "up",
-      completed: true
     }
   ]
 };
@@ -27,7 +23,11 @@ function reducer(state = initialState, action) {
     case COMPLETED:
       return {
         ...state,
-        completed: action.payload
+        todos: state.todos.map((todo, index) =>
+          action.payload === index
+            ? { ...todo, completed: !todo.completed }
+            : todo
+        )
       };
     default:
       return state;

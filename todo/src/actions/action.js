@@ -12,5 +12,5 @@ export const addNew = newTodo => {
   return {
     type: ADD_NEW,
     payload: newTodo
-  }
-}
+  };
+};

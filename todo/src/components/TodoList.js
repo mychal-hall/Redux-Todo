@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { completed, addNew } from "../actions/action";
 
 class TodoList extends Component {
-    state = {
-        newTodo: ""
-    }
+  state = {
+    newTodo: ""
+  };
   handleChanges = e => {
     this.setState({ newTodo: e.target.value });
   };
@@ -17,7 +17,7 @@ class TodoList extends Component {
 
   toggleComplete = (e, index) => {
     e.preventDefault();
-    this.props.toggleComplete(index);
+    this.props.completed(index);
   };
 
   render() {
@@ -27,7 +27,7 @@ class TodoList extends Component {
           {this.props.todos.map((todo, index) => (
             <h3 onClick={e => this.toggleComplete(e, index)} key={index}>
               {todo.value}
-              {todo.completed && <i class="fas fa-check" />}
+              {todo.completed && <i className="fas fa-check" />}
             </h3>
           ))}
         </div>
