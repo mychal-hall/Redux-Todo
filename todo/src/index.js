@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import "./index.css";
 // Importing various redux things. Importing components and reducer.
 
 import { createStore } from "redux";
@@ -14,7 +14,7 @@ const store = createStore(reducer);
 // Building the App, which contains my components
 function App() {
   return (
-    <div>
+    <div className="app">
       <TodoList />
     </div>
   );

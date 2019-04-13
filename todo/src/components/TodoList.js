@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"; // Importing the connect, which is at the end of my code
 import { completed, addNew } from "../actions/action"; // importing function from actions.js to use
+import "../index.css";
 
 class TodoList extends Component {
   // building the todolist component
@@ -27,25 +28,33 @@ class TodoList extends Component {
 
   render() {
     return (
-      <>
-        <div>
+      <div className="todo-wrapper">
+        <h1 className="header">Things To Do</h1>
+        <div className="todo-list">
           {this.props.todos.map((todo, index) => (
-            <h3 onClick={e => this.toggleComplete(e, index)} key={index}>
+            <h3
+              className="todo"
+              onClick={e => this.toggleComplete(e, index)}
+              key={index}
+            >
               {todo.value}
               {todo.completed && <i className="fas fa-check" />}
             </h3>
           ))}
         </div>
-        <form>
+        <form className="form">
           <input
+            className="input"
             type="text"
             value={this.state.newTodo}
             onChange={this.handleChanges}
             placeholder="Add some thing to do"
           />{" "}
-          <button onClick={this.handleClick}>Add Task</button>
+          <button className="btn" onClick={this.handleClick}>
+            Add Task
+          </button>
         </form>
-      </>
+      </div>
     );
   }
 }
